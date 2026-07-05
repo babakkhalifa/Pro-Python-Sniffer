@@ -15,4 +15,5 @@ A professional-grade, lightweight network packet sniffer built with Python and S
 ```bash
    git clone https://github.com/babakkhalifa/Pro-Python-Sniffer.git
    cd Pro-Python-Sniffer
+   python sniffer.py
    
