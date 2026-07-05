@@ -10,13 +10,13 @@ class ProSniffer:
         self.captured_packets = []
 
     def packet_callback(self, packet):
-        """تحلیل و نمایش هر بسته به صورت حرفه‌ای"""
+        
         if IP in packet:
             timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             ip_src = packet[IP].src
             ip_dst = packet[IP].dst
             
-            # تشخیص پروتکل
+    
             proto_name = "OTHER"
             if TCP in packet:
                 proto_name = "TCP"
@@ -25,7 +25,7 @@ class ProSniffer:
             elif ICMP in packet:
                 proto_name = "ICMP"
 
-            # ساخت یک پیام تمیز برای نمایش
+            
             log_msg = f"[{timestamp}] {proto_name:4} | {ip_src} -> {ip_dst}"
             
             if TCP in packet:
@@ -35,7 +35,7 @@ class ProSniffer:
 
             print(log_msg)
             
-            # اضافه کردن به لیست برای ذخیره سازی
+            
             self.captured_packets.append(packet)
 
     def start(self):
@@ -46,7 +46,7 @@ class ProSniffer:
         print("-" * 60)
 
         try:
-            # شروع شنود
+            
             sniff(
                 iface=self.interface,
                 filter=self.filter_str,
@@ -61,7 +61,7 @@ class ProSniffer:
             self.save_data()
 
     def save_data(self):
-        """ذخیره بسته‌ها در فایل pcap"""
+        
         if self.save_file and self.captured_packets:
             print(f"[*] Saving {len(self.captured_packets)} packets to {self.save_file}...")
             wrpcap(self.save_file, self.captured_packets)
@@ -72,7 +72,7 @@ class ProSniffer:
             print("[!] No packets captured to save.")
 
 if __name__ == "__main__":
-    # تنظیم آرگومان‌های خط فرمان برای اینکه شبیه ابزارهای حرفه‌ای باشد
+    
     parser = argparse.ArgumentParser(description="Pro Python Packet Sniffer")
     parser.add_argument("-i", "--interface", help="Network interface (e.g., eth0, wlan0, Wi-Fi)")
     parser.add_argument("-f", "--filter", help="BPF filter (e.g., 'tcp', 'udp', 'port 80')")
