@@ -11,9 +11,9 @@ A professional-grade, lightweight network packet sniffer built with Python and S
 
 ## 🚀 Installation
 
-1. Clone the repository:
+1. all steps for install and use:
 ```bash
-   git clone https://github.com/babakkhalifa/Pro-Python-Sniffer.git
-   cd Pro-Python-Sniffer
-   python sniffer.py
+   1. git clone https://github.com/babakkhalifa/Pro-Python-Sniffer.git
+   2. cd Pro-Python-Sniffer
+   3. python sniffer.py
    
